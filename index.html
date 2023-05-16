@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__shape2prog_csail_mit_edu">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="shortcut icon" href="http://shape2prog.csail.mit.edu/images/favicon.ico">
+        <meta name="description" content="Counterfactual Data-Augmented Sequential Recommendation">
+        <meta name="keywords" content="Counterfactual Data-Augmented, Sequential Recommendation">
+        <title>Individual Treatment Effect</title>
+        <link rel="stylesheet" href="asset/font.css">
+        <link rel="stylesheet" href="asset/main.css">
+    </head>
+    <body data-gr-c-s-loaded="true">
+        <div class="outercontainer">
+            <div class="container">
+                <div class="content project_title">
+                    <h1>DFITE: Estimation of Individual Treatment Effect Using Diffusion Model</h1>
+                </div>
+                <div class="content project_headline">
+                    <center><h2><font size="3">Anonymous Author</font>&nbsp;&nbsp;
+                </div>
+                <div class="content">
+                    <div class="text">
+                        <h1>1. Abstract</h1>
+                        <p><font size=3>Learning individualized treatment effects (ITE) from observational data is a challenging task due to the absence of unobserved confounders. Previous 
+                            methods mostly focus on assuming the Ignorability assumption  ignoring the unobserved confounders or overlooking the impact of an apriori knowledge on the generation process of the latent variable, which can be quite impractical  in real-world scenarios. Motivated by the recent advances in the latent variable modeling, we propose to capture the unobserved latent space using diffusion model, and accordingly to estimate the causal effect. More concretely, 
+                            we build on the reverse diffusion process for the unobserved confounders as a Markov chain conditioned on an apriori knowledge. In order to implement our model in a feasible way,  we derive the variational bound in closed form.
+                             In the experiments, we compare our model with the state-of-the-art methods based on  both synthetic and benchmark  datasets , where we can empirically demonstrate consistent improvements of our model on $\sqrt{\epsilon_{PEHE}}$ and $\epsilon_{ATE}$, respectively.</font></p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="text">
+                        <h1>2. Motivating Examples. </h1>
+                        <div class="content project_headline">
+                        <div class="img" style="text-align:center">
+                            <img class="img_responsive" src="asset/intro.png" alt="Intro" style="margin:auto;max-width:60%">
+                        </div>
+                        <div class="text">
+                            <p>
+                                <font size=3>Motivating example on the generation process of the unobserved  confounders. A is a treatment, X is an observed  confounder, Y denotes an outcome,  Z is an unobserved  confounders and $\eta$ represents the common prior variable of X and Z.
+                                </font>
+                            </p>
+                        </div>
+						<div class="content">
+                    <div class="text">
+						 <h1>3. Our Framework. </h1>
+                        <div class="content project_headline">
+                        <div class="img" style="text-align:center">
+                            <img class="img_responsive" src="asset/model.png" alt="Intro" style="margin:auto;max-width:100%">
+                        </div>
+                        <div class="text">
+                            <p>
+                                <font size=3> <b> The above training objective can be optimized efficiently since each term in this objective is tractable. 
+                                </font>
+                            </p>
+                        </div>
+
+						<div class="content">
+						<h3>Contributions</h3>
+                            <p><ul class="download">
+							<font size=3>
+                                <li>We first derive a variational lower bound of the likelihood of the unobserved confounders conditional on the generation factor ;</li>
+                                <li>We reformulate that bound into a tractable expression in cloased form;</li> 
+                                <li>We verify the effectiveness and generality of our framework by comparing with 12  state-of-the art methods in the experiment.</li>
+                            
+                            </font>
+                        </ul></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="text">
+                        <h1>3. Main Results</h1>
+                    </div>
+
+                    <div class="content project_headline">
+					<div class="text">
+                            <p><font size=3>Table 1: Overall comparison between the baselines and our models(the last two lines in each module).</font></p>
+                        </div>
+                        <div class="img" style="text-align:center">
+                            <img class="img_responsive" src="asset/result.png" alt="result" style="margin:auto;max-width:70%">
+                        </div>
+                        
+                    </div>
+					
+                </div>
+				<div class="content">
+                    <div class="text">
+                        <h1>4. Code and Datasets</h1>
+
+						<h2> 4.1 Code <a href="https://drive.google.com/drive/folders/1H557aELWufEd0z8XWtKkFSyB7-hCN4Ce?usp=sharing">[link:Google Driver]</font></a></h2>
+						
+						<div class="content project_headline">
+						
+                        <h3>Table 2: Structure of the code files [main program].</h3> 
+                        <br\>
+                            
+						<div class="img" style="text-align:center">
+                            <table border="1" cellspacing="0">
+                                <tr>
+                                  <td>dataset</td>
+                                  <td>dataset folder</td>
+                                </tr>   
+                                
+                                <tr>
+                                  <td>causally.config</td>
+                                  <td>loading configuration file</td>
+                                </tr>  
+                                
+                                <tr>
+                                  <td>causally.data</td>
+                                  <td>data process and data loader program</td>
+                                </tr> 
+                                
+                                <tr>
+                                  <td>causally.evaluator</td>
+                                  <td>evaluation program</td>
+                                </tr> 
+                                <tr>
+                                  <td>causally.model</td>
+                                  <td>our model program</td>
+                                </tr> 
+                                <tr>
+                                  <td>causally.properties</td>
+                                  <td> configuration yaml file </td>
+                                </tr> 
+                                <tr>
+                                  <td>causally.trainer</td>
+                                  <td>training program</td>
+                                </tr> 
+                                <tr>
+                                  <td>causally.utils</td>
+                                  <td>utils program</td>
+                                </tr> 
+                                
+                                </table>
+                                
+                        </div>
+					
+                        
+                        
+                        </div>
+                        <h2>4.2 Datasets <a href="https://drive.google.com/drive/folders/1gKOtlKViKV1TrdpCq0j4p6zGMwYmW5w2?usp=sharing">[link:Google Driver]</a></font></h2>
+						<div class="content project_headline">
+						<div class="text">
+                            <p><font size=3>Table 3: Statistics of the datasets used in our experiments.</font></p>
+                        </div>
+                        <div class="img" style="text-align:center">
+                            <img class="img_responsive" src="asset/data.png" alt="result" style="margin:auto;max-width:80%">
+                        </div>
+                        
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="content">
+                    <div class="text">
+                        <h1>5. Usage</h1>
+						<p> <font size=4>5.1. Download the code</font></p>
+						<p> <font size=4>5.2. Download the dataset, and put it into data/dataset name/ folder.</font></p>
+						<p> <font size=4>5.3. run main.py file.</font></p>
+						<font size=3>
+                        <p> For example: python main.py -d ACIC -m BNN </p>
+                        The detailed configuration file is  properties/model/model name.yaml.
+                    </div>
+                </div>
+               
+                <div class="content">
+                    <div class="text">
+                        <h1>6. Detailed parameter</h1>
+						<ul class="download">
+						<font size=3>
+                            <li><p>Learning rate: 0.01 </p></li>
+							<li><p>Batch size: 64 </p></li>
+							<li><p>Embedding size: 64 </p></li>
+                            <li><p>Layer sizes: [200,200,200] [100,100,100] </p></li>
+                            
+						</font>
+                        </ul>
+						
+                    </div>
+                </div>
+
+
+                <div class="content">
+                    <div class="text">
+                        <h1>7. Runtime Environment</h1>
+						<ul class="download">
+						<font size=3>
+                            <li><p>System:Linux dell-PowerEdge-R730</p></li>
+							<li><p>CPU: Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz</p></li>
+							<li><p>CPU-Memory:25G</p></li>
+							<li><p>GPU:NVIDIA Corporation GV100 [TITAN V] (rev a1)</p></li>
+                            <li><p>GPU-Memory:12G</p></li>
+							<li><p>Pytorch: 1.7.0</p></li>
+							<li><p>CUDA:10.1</p></li>
+						</font>
+                        </ul>
+						
+                    </div>
+                </div>
+
+<div id="download_plus_animation"></div></body></html>
+
+
