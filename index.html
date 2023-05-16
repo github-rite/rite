@@ -12,7 +12,7 @@
         <div class="outercontainer">
             <div class="container">
                 <div class="content project_title">
-                    <h1>DFITE: Estimation of Individual Treatment Effect Using Diffusion Model</h1>
+                    <h1>Bounding the Robustness and Generalization for Individual Treatment Effect</h1>
                 </div>
                 <div class="content project_headline">
                     <center><h2><font size="3">Anonymous Author</font>&nbsp;&nbsp;
@@ -20,10 +20,16 @@
                 <div class="content">
                     <div class="text">
                         <h1>1. Abstract</h1>
-                        <p><font size=3>Learning individualized treatment effects (ITE) from observational data is a challenging task due to the absence of unobserved confounders. Previous 
-                            methods mostly focus on assuming the Ignorability assumption  ignoring the unobserved confounders or overlooking the impact of an apriori knowledge on the generation process of the latent variable, which can be quite impractical  in real-world scenarios. Motivated by the recent advances in the latent variable modeling, we propose to capture the unobserved latent space using diffusion model, and accordingly to estimate the causal effect. More concretely, 
-                            we build on the reverse diffusion process for the unobserved confounders as a Markov chain conditioned on an apriori knowledge. In order to implement our model in a feasible way,  we derive the variational bound in closed form.
-                             In the experiments, we compare our model with the state-of-the-art methods based on  both synthetic and benchmark  datasets , where we can empirically demonstrate consistent improvements of our model on $\sqrt{\epsilon_{PEHE}}$ and $\epsilon_{ATE}$, respectively.</font></p>
+                        <p><font size=3>Individual treatment effect (ITE) estimation has important applications  in fields such as healthcare, economics and education,  hence  attracted increasing attention from both research and industrial community. However, most existing
+                            models  may not perform well in practice due to the lack of robustness of the
+                            ITE estimation predicted by deep neural networks when  an imperceptible perturbation has been added to the covariate. To alleviate this
+                            problem, in this paper,  we first derive an informative generalization  bound that demonstrate the expected ITE estimation error is bounded by one of the most important term, the Lipschits constant of ITE model. In addition, in order to use Integral Probability Metrics (IPM) to measure
+                            distances between distributions, we also obtain explicit
+                            bounds for the Wasserstein (WASS) and Maximum Mean
+                            Discrepancy (MMD) distances. More specifically, we propose two types of regularizations called Lipschits Regularization and  reproducing kernel Hilbert space (RKHS) Regularization for encouraging robustness in estimating ITE from
+                            observational data.
+                            Extensive experiments on both synthetic  examples and standard benchmarks  demonstrate our framework’s
+                            effectiveness and generality.</font></p>
                     </div>
                 </div>
 
@@ -32,11 +38,12 @@
                         <h1>2. Motivating Examples. </h1>
                         <div class="content project_headline">
                         <div class="img" style="text-align:center">
-                            <img class="img_responsive" src="asset/intro.png" alt="Intro" style="margin:auto;max-width:60%">
+                            <img class="img_responsive" src="asset/intro.png" alt="Intro" style="margin:auto;max-width:100%">
                         </div>
                         <div class="text">
                             <p>
-                                <font size=3>Motivating example on the generation process of the unobserved  confounders. A is a treatment, X is an observed  confounder, Y denotes an outcome,  Z is an unobserved  confounders and $\eta$ represents the common prior variable of X and Z.
+                                <font size=3>The above bound provides an upper bound for PEHE loss , which mainly consists of the empirical regression losses on training set, the Lipschits constant of $f$ and $\Phi$,  the covering numbers of $\lambda$-balls  and the distance between the treated and control distributions induced by $\Phi$. Except for the Lipschits constant  term, all of which can be empirically estimated or
+                                    approximated by some deep learning tricks. The upper bound decreases as the Lipschits constant $\Lambda_p$  gets small. Therefore, it instructs us to constrain the parameters of $f$ and $\Phi$ that can obtain a robust ITE model with a small  Lipschits constant, even less than or equal to 1. 
                                 </font>
                             </p>
                         </div>
@@ -49,7 +56,7 @@
                         </div>
                         <div class="text">
                             <p>
-                                <font size=3> <b> The above training objective can be optimized efficiently since each term in this objective is tractable. 
+                                <font size=3> <b> Our main objective function. 
                                 </font>
                             </p>
                         </div>
@@ -58,10 +65,17 @@
 						<h3>Contributions</h3>
                             <p><ul class="download">
 							<font size=3>
-                                <li>We first derive a variational lower bound of the likelihood of the unobserved confounders conditional on the generation factor ;</li>
-                                <li>We reformulate that bound into a tractable expression in cloased form;</li> 
-                                <li>We verify the effectiveness and generality of our framework by comparing with 12  state-of-the art methods in the experiment.</li>
-                            
+                                <li> We examine the problem
+                                of robustness in estimating ITE, deriving an informative generalization error bound  for the PEHE loss, which connects the problem
+                                with adversarial machine learning and is instructive for reducing the Lipschits constant of ITE model;</li> 
+                                 <li>  We obtain explicit
+                                bounds for the WASS and MMD distances so as to use IPM measure
+                                distances between treated and control distributions;</li>
+                                 <li>  According to the theoretical analysis, we propose a computationally efficient framework for encouraging robustness in estimating ITE from
+                                observational data;</li>
+                                  <li>  We conduct extensive
+                                experiments based on
+                                both synthetic examples and standard benchmark datasets to validate its effectiveness.</li>
                             </font>
                         </ul></p>
                         </div>
